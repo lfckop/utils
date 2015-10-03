@@ -1,0 +1,23 @@
+#!/bin/bash
+# a command wrapper script: find . -name $filename -exec grep $key {} \;
+# or: find . -name $filename -exec grep -l $key {} \;
+
+# created by zhouwei on 2015-9-10
+
+if (($# < 2)) ; then
+    echo "Usage: fname filename key [-l]"
+    exit 1
+fi
+
+filename="$1"
+key="$2"
+list_flag="$3"
+
+if [ "${list_flag}" = "-l" ]; then
+    find . -name "$filename" -exec grep -l "$key" {} \;
+else
+    find . -name "$filename" -exec grep --color=auto "$key" {} \;
+fi
+
+
+exit 0
