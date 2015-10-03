@@ -1,5 +1,5 @@
 #!/bin/bash
-# a command wrapper script: find . -name $filename -exec grep $key {} \;
+# a command wrapper script: find . -name $filename -exec grep --color=auto $key {} \;
 # or: find . -name $filename -exec grep -l $key {} \;
 
 # created by zhouwei on 2015-9-10
