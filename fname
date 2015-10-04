@@ -1,5 +1,5 @@
 #!/bin/bash
-# a command wrapper script: find . -name $filename -exec grep --color=auto $key {} \;
+# a command wrapper script: find . -name $filename -exec grep --color=auto -H $key {} \;
 # or: find . -name $filename -exec grep -l $key {} \;
 
 # created by zhouwei on 2015-9-10
@@ -16,7 +16,7 @@ list_flag="$3"
 if [ "${list_flag}" = "-l" ]; then
     find . -name "$filename" -exec grep -l "$key" {} \;
 else
-    find . -name "$filename" -exec grep --color=auto "$key" {} \;
+    find . -name "$filename" -exec grep --color=auto -H "$key" {} \;
 fi
 
 
