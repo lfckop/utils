@@ -1,6 +1,6 @@
 #!/bin/bash
 # source this file and it will affect temporary shell
-# Usage: source /home/zhouwei/utils/source.sh
+# Usage: source /home/zhouwei/utils/.source.sh
 # created by zhouwei on 2015-10-6
 
 # 
