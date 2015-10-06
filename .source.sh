@@ -1,6 +1,7 @@
 #!/bin/bash
-# source this file and it will affect temporary shell
+# source this file and it will only affect current shell
 # Usage: source /home/zhouwei/utils/.source.sh
+# used when remote login servers through ssh
 # created by zhouwei on 2015-10-6
 
 # 
