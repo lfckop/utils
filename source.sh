@@ -17,4 +17,3 @@ export PATH=$PATH:/home/zhouwei/utils
 # git auto-completion
 source /home/zhouwei/utils/.git-completion.bash
 
-exit 0
