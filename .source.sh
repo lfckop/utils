@@ -8,6 +8,7 @@
 alias ll="ls -alF"
 alias grep="grep --color=auto"
 alias pg="ps aux | grep -v grep | grep"
+alias ng="netstat -anp | grep"
 
 # modify the command prompt
 export PS1="\[\033[1;32m\][\[\033[0;32m\]\u@\h:\[\033[1;35m\]\w\[\033[1;32m\]]\[\033[1;31m\] \\$\[\033[0m\] "
