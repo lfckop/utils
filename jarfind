@@ -1,0 +1,32 @@
+#!/bin/bash
+### find file in jars
+### source from https://github.com/qdaxb/wtool_java/blob/master/tools/jarfind
+
+if [ $# -lt 2 ];then
+    echo "Usage: jarfind file_name jar_path";
+    exit 1;
+fi
+
+findinjar(){
+	result=`unzip -l "$1"|grep "$2"`
+	if [ $? = 0 ];then
+	    echo "$1 :"
+	    echo "$result"
+	fi
+}
+keyword=$1;
+while true; do
+    folder=$2
+    if [ "$folder" = "" ];then
+	break;
+    fi
+    if [ -d "$folder" ]; then
+	echo "begin searching file $keyword in $folder"
+	for filename in `find $folder -name '*.jar'`; do
+	    findinjar "$filename" "$keyword"
+	done
+    elif [ -f "$folder" ]; then
+	findinjar "$folder" "$keyword"
+    fi
+    shift;
+done
