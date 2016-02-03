@@ -1,0 +1,12 @@
+#!/bin/bash
+# a 'tar jtvf' wrapper
+# created by zhouwei on 2016-2-3
+
+if (($# < 1)); then
+    echo "Usage: tart filename"
+    exit 1
+fi
+
+tar jtvf "$@"
+
+exit 0
