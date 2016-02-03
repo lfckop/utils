@@ -1,7 +1,6 @@
 #!/bin/bash
 # a command wrapper script: find . -type f -exec grep --color=auto -H $key {} \;
 # or: find . -type f -exec grep -l $key {} \;
-
 # created by zhouwei on 2015-9-10
 
 if (($# < 1)) ; then
