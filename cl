@@ -1,5 +1,5 @@
 #!/bin/bash
 
-echo "scale=6;$@" | bc
+echo "scale=20;$@" | bc
 
 exit 0
