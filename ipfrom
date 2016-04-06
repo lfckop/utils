@@ -1,0 +1,15 @@
+#!/bin/bash
+# check where is the $ip from
+# created by zhouwei on 2016-4-6
+
+if (($#<1)); then
+    echo "Usage: ipfrom ip"
+    exit 1
+fi
+
+for ip in $@
+do
+    curl "http://ip.cn/index.php?ip=${ip}"
+done
+
+exit 0
