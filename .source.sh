@@ -7,8 +7,11 @@
 # 
 alias ll="ls -alF"
 alias grep="grep --color=auto"
-alias pg="ps aux | grep -v grep | grep"
-alias ng="netstat -anp | grep"
+#alias pg="ps aux | grep -v grep | grep"
+alias pg="ps aux | head -1; ps aux | grep -v grep | grep"
+#alias ng="netstat -anp | grep"
+alias ng="netstat -antup | awk 'NR==2'; netstat -antup | grep"
+alias lg="lsof -i -n | head -1; lsof -i -n | grep"
 alias extip="curl -s http://whatismyip.akamai.com/"
 alias e="exit"
 alias yi="yum -y install"
