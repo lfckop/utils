@@ -2,7 +2,7 @@
 # source this file and it only affect the current shell
 # Usage: source /home/zhouwei/utils/.source.sh
 # Or, if you like, you can append 'source /home/zhouwei/utils/.source.sh' to /etc/profile, and it'll affect all shells.
-# used when remote login servers through ssh
+# used when login remote servers through ssh
 # created by zhouwei on 2015-10-6
 
 # 
