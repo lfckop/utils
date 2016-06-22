@@ -1,0 +1,35 @@
+#!/bin/bash
+# linux performance analysis tool
+# used in the first 60 seconds after login to a server with a performance issue
+# inspired by http://techblog.netflix.com/2015/11/linux-performance-analysis-in-60s.html
+# created by zhouwei on 2016-6-22
+
+print_line() {
+    echo ""
+    echo "=================================================================================="
+    echo ""
+}
+
+outfile="perf_stats_$(date '+%Y-%m-%d_%H:%M:%S')"
+exec 3>&1
+exec 1>$outfile
+
+echo "linux performance analysis statistics"
+echo "date: $(date '+%Y-%m-%d %H:%M:%S')"
+print_line
+
+echo "uptime:"
+uptime
+print_line
+
+echo "messages from the kernel ring buffer:"
+dmesg | tail -20
+echo ""
+tail -20 /var/log/messages
+print_line
+
+exec 1>&3
+exec 3>&-
+echo "performance statistics finished! outfile: $(pwd)/$outfile"
+
+exit 0
