@@ -10,26 +10,57 @@ print_line() {
     echo ""
 }
 
+# stats start
 outfile="perf_stats_$(date '+%Y-%m-%d_%H:%M:%S')"
 exec 3>&1
 exec 1>$outfile
 
+# print file header
 echo "linux performance analysis statistics"
 echo "date: $(date '+%Y-%m-%d %H:%M:%S')"
 print_line
 
+# uptime
 echo "uptime:"
 uptime
 print_line
 
-echo "messages from the kernel ring buffer:"
+# dmesg and /var/log/messages
+echo "dmesg:"
 dmesg | tail -20
-echo ""
-tail -20 /var/log/messages
+if [ -f /var/log/messages ]; then
+    echo ""
+    echo "/var/log/messages:"
+    tail -20 /var/log/messages
+fi
 print_line
 
+# cpu and disk usages
+echo "cpu usage:"
+free -m
+echo "disk usage:"
+df -h
+print_line
+
+# 
+print_line
+
+#
+print_line
+
+#
+print_line
+
+#
+print_line
+
+# 
+print_line
+
+# the end
 exec 1>&3
 exec 3>&-
-echo "performance statistics finished! outfile: $(pwd)/$outfile"
+echo "performance statistics finished!"
+echo "outfile: $(pwd)/$outfile"
 
 exit 0
