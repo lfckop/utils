@@ -10,6 +10,13 @@ print_line() {
     echo ""
 }
 
+# install sysstat if necessary
+if ! which iostat || ! which sar ; then
+    if which yum ; then
+        yum -y install sysstat
+    fi
+fi >&/dev/null
+
 # stats start
 outfile="perf_stats_$(date '+%Y-%m-%d_%H:%M:%S')"
 exec 3>&1
@@ -19,6 +26,17 @@ exec 1>$outfile
 echo "linux performance analysis statistics"
 echo "date: $(date '+%Y-%m-%d %H:%M:%S')"
 print_line
+
+# ps aux, if java process exists
+if ps aux | grep -v grep | grep java >/dev/null ; then
+    echo "ps aux - java:"
+    ps aux | head -1
+    ps aux | grep -v grep | grep java
+    if [ "$(ps aux | grep -v grep | grep java | wc -l)" = "1" ]; then
+	top -b -n 1 -H -p $(pgrep -f java)
+    fi
+    print_line
+fi
 
 # uptime
 echo "uptime:"
@@ -43,19 +61,47 @@ echo "disk usage:"
 df -h
 print_line
 
-# 
+# top
+echo "top:"
+top -b -n 3
 print_line
 
-#
+# netstat
+echo "netstat - sockets stats:"
+netstat -ant | awk '/^tcp/ {s[$NF]++} END{for(i in s) print i, s[i]}' OFS="\t"
 print_line
 
-#
+# set count seconds
+count=10
+
+# vmstat
+echo "vmstat 1 ${count}:"
+vmstat 1 ${count}
 print_line
 
-#
+# pidstat
+echo "pidstat 1 ${count}:"
+pidstat 1 ${count}
 print_line
 
-# 
+# mpstat
+echo "mpstat -P ALL 1 ${count}:"
+mpstat -P ALL 1 ${count}
+print_line
+
+# iostat
+echo "iostat -xz 1 ${count}:"
+iostat -xz 1 ${count}
+print_line
+
+# sar -n DEV
+echo "sar -n DEV 1 ${count}:"
+sar -n DEV 1 ${count}
+print_line
+
+# sar -n TCP, ETCP
+echo "sar -n TCP,ETCP 1 ${count}:"
+sar -n TCP,ETCP 1 ${count}
 print_line
 
 # the end
