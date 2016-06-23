@@ -35,9 +35,10 @@ if [ -f /var/log/messages ]; then
 fi
 print_line
 
-# cpu and disk usages
-echo "cpu usage:"
+# memory and disk usages
+echo "memory usage:"
 free -m
+echo ""
 echo "disk usage:"
 df -h
 print_line
