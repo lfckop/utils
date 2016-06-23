@@ -63,7 +63,7 @@ print_line
 
 # top
 echo "top:"
-top -b -n 3
+top -b -n 1
 print_line
 
 # netstat
