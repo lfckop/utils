@@ -1,6 +1,6 @@
 #!/bin/bash
 # a 'unzip -p some-jar-file.jar META-INF/MANIFEST.MF' wrapper
-# create by zhouwei on 2016-2-3
+# created by zhouwei on 2016-2-3
 
 if (($# < 1)); then
     echo "Usage: catmf jarfile.jar"
