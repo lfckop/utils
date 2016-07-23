@@ -16,6 +16,8 @@ alias lg="lsof -i -n | head -1; lsof -i -n | grep"
 alias extip="curl -s http://whatismyip.akamai.com/"
 alias e="exit"
 alias yi="yum -y install"
+alias mcp="mvn clean package"
+alias mcpnt="mvn clean package -DskipTests -Dmaven.test.skip=true"
 
 # modify the command prompt
 export PS1="\[\033[1;32m\][\[\033[0;32m\]\u@\h:\[\033[1;35m\]\w\[\033[1;32m\]]\[\033[1;31m\] \\$\[\033[0m\] "
