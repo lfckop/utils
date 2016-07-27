@@ -8,7 +8,7 @@ if [ $# -lt 2 ];then
 fi
 
 LOOK_FOR=$1
-LOOK_FOR=`echo ${LOOK_FOR//\./\/}`
+#LOOK_FOR=`echo ${LOOK_FOR//\./\/}`
 while true; do
     folder=$2
     if [ "$folder" = "" ];then

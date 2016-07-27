@@ -1,5 +1,5 @@
 #!/bin/bash
-# a 'tar jtvf' wrapper
+# a 'tar tf' wrapper
 # created by zhouwei on 2016-2-3
 
 if (($# < 1)); then
@@ -7,6 +7,6 @@ if (($# < 1)); then
     exit 1
 fi
 
-tar jtvf "$@"
+tar tf "$@"
 
 exit 0

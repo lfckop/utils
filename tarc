@@ -1,5 +1,5 @@
 #!/bin/bash
-# a 'tar jcvf' wrapper
+# a 'tar cf' wrapper
 # created by zhouwei on 2016-2-3
 
 if (($# < 2)) ; then
@@ -9,9 +9,9 @@ fi
 
 filename_prefix=$1
 shift
-tar jcvf "${filename_prefix}.tar.bz2" "$@"
+tar cf "${filename_prefix}.tar" "$@"
 if (($? != 0)); then
-    rm -f "${filename_prefix}.tar.bz2" >&/dev/null
+    rm -f "${filename_prefix}.tar" >&/dev/null
     exit 1
 fi
 
