@@ -18,7 +18,7 @@ alias e="exit"
 alias yi="yum -y install"
 alias mcp="mvn clean package"
 alias mcpnt="mvn clean package -DskipTests -Dmaven.test.skip=true"
-alias sost="netstat -n | awk '/^tcp/ {s[\$NF]++} END{for(i in s) print i, s[i]}'"
+alias sost="netstat -n | awk '/^tcp/ {s[\$NF]++} END{for(i in s) print i, s[i]}' OFS='\t'"
 
 # modify the command prompt
 export PS1="\[\033[1;32m\][\[\033[0;32m\]\u@\h:\[\033[1;35m\]\w\[\033[1;32m\]]\[\033[1;31m\] \\$\[\033[0m\] "
