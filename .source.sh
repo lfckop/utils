@@ -20,13 +20,16 @@ alias mcp="mvn clean package"
 alias mcpnt="mvn clean package -DskipTests -Dmaven.test.skip=true"
 alias sost="netstat -n | awk '/^tcp/ {s[\$NF]++} END{for(i in s) print i, s[i]}' OFS='\t'"
 
+# git auto-completion
+source /home/zhouwei/utils/.git-completion.bash
+source /home/zhouwei/utils/.git-prompt.sh
+
 # modify the command prompt
-export PS1="\[\033[1;32m\][\[\033[0;32m\]\u@\h:\[\033[1;35m\]\w\[\033[1;32m\]]\[\033[1;31m\] \\$\[\033[0m\] "
 #export PS1="\[\033[1;35m\]\w\[\033[1;31m\] \\$\[\033[0m\] "
+#export PS1="\[\033[1;32m\][\[\033[0;32m\]\u@\h:\[\033[1;35m\]\w\[\033[1;32m\]]\[\033[1;31m\] \\$\[\033[0m\] "
+export PS1='\[\033[1;32m\][\[\033[0;32m\]\u@\h:\[\033[1;35m\]\w\[\033[1;32m\]$(__git_ps1 " (%s)")\[\033[1;32m\] ]\[\033[1;31m\] \$\[\033[0m\] '
 
 # add utils to PATH
 export PATH=$PATH:/home/zhouwei/utils
 
-# git auto-completion
-source /home/zhouwei/utils/.git-completion.bash
 
