@@ -4,6 +4,11 @@
 #        2. given a java pid: jdt pid
 # Created by zhouwei on 2016-9-18
 
+if (($# >= 2)) ; then
+    echo "Usage: jdt [pid]"
+    exit 1
+fi
+
 print_line() {
     echo ""
     echo "=================================================================================="
@@ -12,11 +17,7 @@ print_line() {
 
 # get pid
 if [[ "$1" != "" ]]; then
-    if ! [ "$1" -eq "$1" 2>/dev/null ]; then 
-	echo "ERROR: $1 is not a pid (must be a number)!"
-	exit 1 
-    fi
-    if ! ps aux | grep -v grep | grep java | grep "$1" >&/dev/null ; then
+    if ! ps aux | grep -v grep | grep java | awk '{print $2}' | grep "^$1$" >&/dev/null ; then
 	echo "ERROR: $1 is not a java pid!"
 	exit 1
     fi
