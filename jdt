@@ -9,13 +9,15 @@ if (($# >= 2)) ; then
     exit 1
 fi
 
+
 print_line() {
     echo ""
     echo "=================================================================================="
     echo ""
 }
 
-# get pid
+
+# get a effective java pid
 if [[ "$1" != "" ]]; then
     if ! ps aux | grep -v grep | grep java | awk '{print $2}' | grep "^$1$" >&/dev/null ; then
 	echo "ERROR: $1 is not a java pid!"
