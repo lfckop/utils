@@ -1,20 +1,14 @@
 #!/bin/bash
-# a command wrapper script: find . -type f -exec grep --color=auto -H $key {} \;
-# or: find . -type f -exec grep -l $key {} \;
+# a command wrapper script: find . -type f -exec grep --color=auto -H -n "$key" {} \;
 # created by zhouwei on 2015-9-10
 
-if (($# < 1)) ; then
-    echo "Usage: ff key [-l]"
+if (($# != 1)) ; then
+    echo "Usage: ff key"
     exit 1
 fi
 
 key="$1"
-list_flag="$2"
 
-if [ "${list_flag}" = "-l" ]; then
-    find . -type f -exec grep -l "$key" {} \;
-else
-    find . -type f -exec grep --color=auto -H "$key" {} \;
-fi
+find . -type f -exec grep --color=auto -H -n "$key" {} \;
 
 exit 0
