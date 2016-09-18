@@ -1,14 +1,26 @@
 #!/bin/bash
 # a command wrapper script: find . -type f -exec grep --color=auto -H -n "$key" {} \;
+# or, with a filename: find . -type f -name "$filename" -exec grep --color=auto -H -n "$key" {} \;
 # created by zhouwei on 2015-9-10
 
-if (($# != 1)) ; then
-    echo "Usage: ff key"
+if (($# < 1)) ; then
+    echo "Usage: ff key [filename...]"
+    echo "Example: ff ConcurrentHashMap"
+    echo "Example: ff ConcurrentHashMap \"*.java\""
+    echo "Example: ff ConcurrentHashMap Test1.java Test2.java"
     exit 1
 fi
 
 key="$1"
+shift
 
-find . -type f -exec grep --color=auto -H -n "$key" {} \;
+if [[ "$@" == "" ]]; then
+    find . -type f -exec grep --color=auto -H -n "$key" {} \;
+else
+    for file in "$@"
+    do
+	find . -type f -name "$file" -exec grep --color=auto -H -n "$key" {} \;
+    done
+fi
 
 exit 0
