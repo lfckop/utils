@@ -31,6 +31,7 @@ else
     elif [[ "$num_java_process" -gt "1" ]]; then
 	echo "please provide a pid: jdt pid"
 	echo "there are multiple java processes, pick one among them:"
+	echo ""
 	ps aux | head -1
 	ps aux | grep -v grep | grep --color=auto java
 	exit 1
