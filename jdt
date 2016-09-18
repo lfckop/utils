@@ -72,8 +72,8 @@ jstack -l $PID
 exec 1>jmap_heap.log
 jmap -heap $PID
 
-exec 1>jmap_histo_live.log
-jmap -histo:live $PID
+exec 1>jmap_histo.log
+jmap -histo $PID
 
 exec 1>jmap_clstats.log
 jmap -clstats $PID
