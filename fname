@@ -1,11 +1,11 @@
 #!/bin/bash
-# this is Deprecated! ff is recommended.
+# this is Deprecated! ff is Recommended!
 # a command wrapper script: find . -name $filename -exec grep --color=auto -H $key {} \;
 # or: find . -name $filename -exec grep -l $key {} \;
 # created by zhouwei on 2015-9-10
 
 if (($# < 2)) ; then
-    echo "fname is Deprecated! ff is recommended."
+    echo "fname is Deprecated! ff is Recommended!"
     echo "Usage: fname filename key [-l]"
     exit 1
 fi
