@@ -109,7 +109,7 @@ jstat -gcpermcapacity $PID 250ms 10 > jstat_gcpermcapacity.log 2>/dev/null
 
 exec 1>&3  
 exec 3>&-
-echo "jdt finished!"
+echo "java dump tool (jdt) finished!"
 echo "output directory is: $output_dir"
 
 exit 0
