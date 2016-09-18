@@ -1,6 +1,7 @@
 #!/bin/bash
-# Java Dump Tool (jdt), a wrapper of jstack, jmap, jinfo, and jstat
-# Usage: 1. if there is only one java process, just: jdt
+# Java Dump Tool (jdt), a wrapper of jstack, jmap, jinfo, jstat, and so on
+# Used to protect the scene before restart a problematic java application
+# Usage: 1. if there is only one running java process, just: jdt
 #        2. given a java pid: jdt pid
 # Created by zhouwei on 2016-9-18
 
@@ -42,8 +43,8 @@ else
 fi
 
 
-# make a debug directory
-output_dir="$(pwd)/debug_java_$PID"
+# make a dump directory
+output_dir="$(pwd)/dump_java_$PID"
 [[ -d $output_dir ]] || mkdir -p $output_dir
 cd $output_dir
 
@@ -118,7 +119,7 @@ jstat -gcpermcapacity $PID 250ms 10 > jstat_gcpermcapacity.log 2>/dev/null
 exec 1>&3  
 exec 3>&-
 echo ""
-echo "java dump tool (jdt) finished!"
+echo "Java Dump Tool (jdt) finished!"
 echo "output directory is: $output_dir"
 
 exit 0
