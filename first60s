@@ -27,6 +27,8 @@ echo "linux performance analysis statistics"
 echo "date: $(date '+%Y-%m-%d %H:%M:%S')"
 print_line
 
+# don't need, comment it with here document
+cat > /dev/null << !EOF!
 # ps aux, if java process exists
 if ps aux | grep -v grep | grep java >/dev/null ; then
     echo "ps aux - java:"
@@ -37,6 +39,7 @@ if ps aux | grep -v grep | grep java >/dev/null ; then
     fi
     print_line
 fi
+!EOF!
 
 # uptime
 echo "uptime:"
