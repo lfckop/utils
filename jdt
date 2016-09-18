@@ -12,7 +12,7 @@ print_line() {
 
 # get pid
 if [[ "$1" != "" ]]; then
-    if ! [[ "$1" -eq "$1" 2>/dev/null ]]; then 
+    if ! [ "$1" -eq "$1" 2>/dev/null ]; then 
 	echo "ERROR: $1 is not a pid (must be a number)!"
 	exit 1 
     fi
