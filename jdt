@@ -41,6 +41,7 @@ else
 	exit 1
     fi
 fi
+echo "starting dump java process: $PID"
 
 
 # make a dump directory
@@ -50,6 +51,7 @@ cd $output_dir
 
 
 # ps aux, /proc, and top 
+echo "starting ps, /proc, and top ..."
 exec 3>&1 
 exec 1>ps_proc_top.log
 echo "date: $(date '+%Y-%m-%d %H:%M:%S')"
@@ -69,6 +71,7 @@ top -b -n 4 -H -p $PID
 
 
 # jstack (use -F to force a dump when it does not respond, see "man jstack")
+exec 1>&3 ; echo "starting jstack ..."
 exec 1>jstack.log
 jstack $PID 
 
@@ -78,6 +81,7 @@ jstack -l $PID
 
 
 # jmap (use -F to force a dump when it does not respond, see "man jmap")
+exec 1>&3 ; echo "starting jmap ..."
 exec 1>jmap_heap.log
 jmap -heap $PID
 
@@ -95,11 +99,13 @@ jmap -dump:live,format=b,file=jmap_dump.bin $PID
 
 
 # jinfo, print Java system properties and VM flags
+exec 1>&3 ; echo "starting jinfo ..."
 exec 1>jinfo.log
 jinfo $PID
 
 
 # jstat
+exec 1>&3 ; echo "starting jstat ..."
 jstat -gc $PID 250ms 20 > jstat_gc.log
 jstat -gccapacity $PID 250ms 10 > jstat_gccapacity.log
 jstat -gccause $PID 250ms 10 > jstat_gccause.log
@@ -122,5 +128,6 @@ exec 3>&-
 echo ""
 echo "Java Dump Tool (jdt) finished!"
 echo "output directory is: $output_dir"
+echo ""
 
 exit 0
