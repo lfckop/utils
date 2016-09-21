@@ -51,7 +51,7 @@ cd $output_dir
 
 # ps aux, /proc, and top 
 exec 3>&1 
-exec 1>ps.log
+exec 1>ps_proc_top.log
 echo "date: $(date '+%Y-%m-%d %H:%M:%S')"
 print_line
 
@@ -65,7 +65,7 @@ cat /proc/${PID}/status
 print_line
 
 echo "top - java:"
-top -b -n 1 -H -p $PID
+top -b -n 4 -H -p $PID
 
 
 # jstack (use -F to force a dump when it does not respond, see "man jstack")
@@ -84,8 +84,9 @@ jmap -heap $PID
 exec 1>jmap_histo_live.log
 jmap -histo:live $PID
 
+# -clstats is for jdk8
 exec 1>jmap_clstats.log
-jmap -clstats $PID
+jmap -clstats $PID 2>/dev/null
 
 exec 1>jmap_finalizerinfo.log
 jmap -finalizerinfo $PID
