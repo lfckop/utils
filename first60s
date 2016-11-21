@@ -1,5 +1,6 @@
 #!/bin/bash
 # linux performance analysis tool
+# usage: first60s
 # used in the first 60 seconds after login to a server with a performance issue
 # inspired by http://techblog.netflix.com/2015/11/linux-performance-analysis-in-60s.html
 # created by zhouwei on 2016-6-22
