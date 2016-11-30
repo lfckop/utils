@@ -3,7 +3,7 @@
 # created by zhouwei on 2016-2-3
 
 if (($# < 1)); then
-    echo "Usage: tarx filename"
+    echo "Usage: tarx filename.tar"
     exit 1
 fi
 

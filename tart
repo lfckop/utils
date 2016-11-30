@@ -3,7 +3,7 @@
 # created by zhouwei on 2016-2-3
 
 if (($# < 1)); then
-    echo "Usage: tart filename"
+    echo "Usage: tart filename.tar"
     exit 1
 fi
 
