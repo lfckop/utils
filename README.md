@@ -14,9 +14,7 @@
 ```bash
 alias ll="ls -alF"
 alias grep="grep --color=auto"
-#alias pg="ps aux | grep -v grep | grep"
 alias pg="ps aux | head -1; ps aux | grep -v grep | grep"
-#alias ng="netstat -anp | grep"
 alias ng="netstat -antup | awk 'NR==2'; netstat -antup | grep"
 alias lg="lsof -i -n | head -1; lsof -i -n | grep"
 alias extip="curl -s http://whatismyip.akamai.com/"
@@ -40,7 +38,7 @@ export PS1='\[\033[1;32m\][\[\033[0;32m\]\u@\h:\[\033[1;35m\]\w\[\033[1;36m\]$(_
 ```
 命令提示符`$PS1`同`alias`一样定义在`.source.sh`文件中，此`$PS1`会显示当前路径和当前文件夹的git分支名(如果它是git目录)，并用颜色区分展示，同时提供了git命令自动补全功能。
 
-在对系统提供的默认命令提示符不满意时，可尝试使用，或在此基础上根据个人喜好对其进行定制。
+在对系统提供的默认命令提示符不满意时，可尝试使用这个或在此基础上根据个人喜好对其进行定制。
 
 ### 常用脚本
 这些脚本实际上只是对一些基础命令的一层薄包装，意图将一些常用的功能以简洁方便的方式提供出来。
