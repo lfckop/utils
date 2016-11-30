@@ -1,6 +1,6 @@
 #!/bin/bash
 # command wrapper for bc, and make it easy to use
-# create by zhouwei on 2016-2-16
+# created by zhouwei on 2016-2-16
 
 if (($# < 1)); then
     echo "Usage: cl \"99.1*(88.6+77.7)\""

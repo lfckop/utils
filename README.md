@@ -1,8 +1,6 @@
 # utils
-Shell utils, and it's always evolving.
+shell工具集，通常用于Linux环境中，包含一些常用的alias、脚本、git命令自动补全、定制化的命令提示符(显示git分支名)等等，意图提供直观、简化的命令行操作。
 
-You can add it to your PATH in /etc/profile: export PATH=$PATH:path-to-utils
-
-See more details in: **.source.sh**
-
-Help me to improve on **[GitHub](https://github.com/lfckop/utils)**.
+## 用法
+1. cd $HOME && git clone https://github.com/lfckop/utils.git
+2. 
