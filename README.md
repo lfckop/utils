@@ -47,7 +47,7 @@ export PS1='\[\033[1;32m\][\[\033[0;32m\]\u@\h:\[\033[1;35m\]\w\[\033[1;36m\]$(_
 
 现分别介绍如下。
 
-#### catmf
+### `catmf`
 对`unzip -p some-jar-file.jar META-INF/MANIFEST.MF`命令的封装，
 打印输出jar包的`META-INF/MANIFEST.MF`文件。
 
@@ -56,19 +56,19 @@ export PS1='\[\033[1;32m\][\[\033[0;32m\]\u@\h:\[\033[1;35m\]\w\[\033[1;36m\]$(_
 Usage: catmf jarfile.jar
 ```
 
-#### cl
+### `cl`
 对`bc`命令的封装，在命令行中进行数学计算CalcuLate。
 
-#### ff
+### `ff`
 
-#### first60s
+### `first60s`
 
-#### ipfrom
+### `ipfrom`
 
-#### jarfind
+### `jarfind`
 
-#### jargrep
+### `jargrep`
 
-#### jdt
+### `jdt`
 
-#### tarc, tart, tarx
+### `tarc, tart, tarx`
