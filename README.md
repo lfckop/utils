@@ -43,7 +43,7 @@ export PS1='\[\033[1;32m\][\[\033[0;32m\]\u@\h:\[\033[1;35m\]\w\[\033[1;36m\]$(_
 ## 常用脚本
 这些脚本实际上只是对一些基础命令的一层薄包装，意图将一些常用的功能以简洁方便的方式提供出来。
 
-通常这些命令都会需要一个或多个参数，在不提供参数直接使用这些命令的时候，会打印出`usage`提示信息并立即退出；同样，这些`usage`信息也会作为注释写在各个脚本的头部，建议使用者详细阅读。
+通常这些命令都会需要一个或多个参数，在不提供参数直接使用这些命令的时候，会打印出`Usage`提示信息并立即退出；同样，这些`Usage`信息也会作为注释写在各个脚本的头部，建议使用者详细阅读。
 
 现分别介绍如下。
 
@@ -57,18 +57,41 @@ Usage: catmf jarfile.jar
 ```
 
 ### `cl`
-对`bc`命令的封装，在命令行中进行数学计算CalcuLate。
+对`bc`命令的封装，在命令行中进行数学计算**C**alcu**L**ate - `cl`。
+
+```bash
+~/utils (master) $ cl
+Usage: cl "99.1*(88.6+77.7)"
+   or: cl 99.9/k (equals: 'cl 99.9/1024')
+   or: cl 99.9/m (equals: 'cl 99.9/1024/1024')
+```
 
 ### `ff`
+对`find`和`grep`命令的封装，用于在当前目录的文件中查找某个字符串。
 
-### `first60s`
+```bash
+~/utils (master) $ ff
+Usage: ff key [filename...]
+Example: ff ConcurrentHashMap
+Example: ff ConcurrentHashMap "*.java"
+Example: ff ConcurrentHashMap Test1.java Test2.java
+```
+
+### `first60s`和`jdt`
+`first60s` and `jdt (java dump tool)`，用于流程化保存现场。
+
+当线上某个Java服务出现严重性能问题，有时候为了临时快速恢复服务，重启应用或许是个不错的选项。但是，在重启应用前需要保存现场，以便提供足够的日志信息来帮助后续排查并尝试解决问题。其中，保存现场这一步是可以大概流程化的，一是节省时间快速处理，二是期望保留足够的当前运行时信息并写到日志文件中。
+
+1.first60s: 保存当前系统信息，如内存、CPU、网络、磁盘等主要部件的负载、IO、性能、容量等相关信息。脚本基本是参考netflix的一篇博文"Linux Performance Analysis in 60,000 Milliseconds"(http://techblog.netflix.com/2015/11/linux-performance-analysis-in-60s.html, 作者Brendan Gregg；翻译版https://segmentfault.com/a/1190000004104493)。
+  Usage: ./first60s
+
+2.jdt (java dump tool): 保存当前Java应用运行时信息，主要是用jstack, jmap, jinfo和jstat保存相关信息，再结合gc日志，应该可以对后续排查提供更多帮助。
+  Usage: ./jdt [pid]
 
 ### `ipfrom`
 
 ### `jarfind`
 
 ### `jargrep`
-
-### `jdt`
 
 ### `tarc, tart, tarx`
