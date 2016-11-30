@@ -3,7 +3,7 @@
 ### source from https://github.com/qdaxb/wtool_java/blob/master/tools/jargrep
 
 if [ $# -lt 2 ];then
-    echo 'Usage : wtool jargrep text <path or filename>'
+    echo 'Usage : jargrep text <path or filename>'
     exit 1;
 fi
 
