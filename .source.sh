@@ -36,4 +36,3 @@ export PS1='\[\033[1;32m\][\[\033[0;32m\]\u@\h:\[\033[1;35m\]\w\[\033[1;36m\]$(_
 # add utils to PATH
 export PATH=$PATH:${PATH_TO_UTILS}
 
-
