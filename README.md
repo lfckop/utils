@@ -78,15 +78,21 @@ Example: ff ConcurrentHashMap Test1.java Test2.java
 ```
 
 ### `first60s`和`jdt`
-`first60s` and `jdt (java dump tool)`，用于流程化保存现场。
+`first60s` and `jdt (Java Dump Tool)`，用于流程化保存现场。
 
 当线上某个Java服务出现严重性能问题，有时候为了临时快速恢复服务，重启应用或许是个不错的选项。但是，在重启应用前需要保存现场，以便提供足够的日志信息来帮助后续排查并尝试解决问题。其中，保存现场这一步是可以大概流程化的，一是节省时间快速处理，二是期望保留足够的当前运行时信息并写到日志文件中。
 
-1.first60s: 保存当前系统信息，如内存、CPU、网络、磁盘等主要部件的负载、IO、性能、容量等相关信息。脚本基本是参考netflix的一篇博文"Linux Performance Analysis in 60,000 Milliseconds"(http://techblog.netflix.com/2015/11/linux-performance-analysis-in-60s.html, 作者Brendan Gregg；翻译版https://segmentfault.com/a/1190000004104493)。
-  Usage: ./first60s
+1. `first60s`：保存当前系统信息，如内存、CPU、网络、磁盘等主要部件的负载、IO、性能、容量等相关信息。脚本基本上是参考netflix的一篇博文[Linux Performance Analysis in 60,000 Milliseconds](http://techblog.netflix.com/2015/11/linux-performance-analysis-in-60s.html)，作者[Brendan Gregg](http://www.brendangregg.com/)；网上也有其译文[Linux性能分析的前60000毫秒](https://segmentfault.com/a/1190000004104493)。
 
-2.jdt (java dump tool): 保存当前Java应用运行时信息，主要是用jstack, jmap, jinfo和jstat保存相关信息，再结合gc日志，应该可以对后续排查提供更多帮助。
-  Usage: ./jdt [pid]
+```bash
+Usage: first60s
+```
+
+2. `jdt`：**J**ava **D**ump **T**ool，保存当前Java应用的运行时信息，主要是用jstack, jmap, jinfo和jstat保存相关信息，再结合GC日志，应该可以对后续排查提供更多帮助。
+
+```bash
+Usage: ./jdt [pid]
+```
 
 ### `ipfrom`
 
