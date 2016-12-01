@@ -24,7 +24,7 @@ alias mcp="mvn clean package"
 alias mcpnt="mvn clean package -DskipTests -Dmaven.test.skip=true"
 alias sost="netstat -n | awk '/^tcp/ {s[\$NF]++} END{for(i in s) print i, s[i]}' OFS='\t'"
 ```
-这些`alias`的定义都在`.source.sh`文件中，一般比较直观，意图是提供简化的命令行操作，部分alias介绍如下。
+这些`alias`都定义在`.source.sh`文件中，一般比较直观，意图是提供简化的命令行操作，部分alias介绍如下。
 
 * `pg`: 查找某个进程：`$ pg java`，可根据进程PID或进程名进行查找。
 * `ng`: 检查端口使用情况：`$ ng 8080`，可根据端口号、进程PID或进程名进行查找。
