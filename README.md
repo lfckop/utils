@@ -1,5 +1,5 @@
 # 简介
-**[utils](https://github.com/lfckop/utils)**: shell工具集，通常用于Linux环境中，包含一些常用的alias、脚本、git命令自动补全、定制化的命令提示符(显示git分支名)等等，意图提供直观、简化的命令行操作。用户也可根据自己的需要对其进行修改和定制。
+**[utils](https://github.com/lfckop/utils)**: shell工具集，通常用于**Linux**环境中，包含一些常用的alias、脚本、git命令自动补全、定制化的命令提示符(显示git分支名)等等，意图提供直观、简化的命令行操作。用户也可根据自己的需要对其进行修改和定制。
 
 这个项目会一直进行更新和维护。欢迎大家使用、提意见和merge request！
 
