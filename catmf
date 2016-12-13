@@ -1,5 +1,5 @@
 #!/bin/bash
-# a 'unzip -p some-jar-file.jar META-INF/MANIFEST.MF' wrapper
+# a 'unzip -p jarfile.jar META-INF/MANIFEST.MF' wrapper
 # created by zhouwei on 2016-2-3
 
 if (($# < 1)); then
