@@ -1,0 +1,9 @@
+#!/bin/bash
+# escape double quotes, replace " into \"
+# created by zhouwei on 2017-02-22
+
+while read line
+do
+    echo "$line" | sed 's/"/\\"/g'
+    echo ""
+done
