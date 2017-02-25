@@ -1,5 +1,5 @@
 #!/bin/bash
-# escape double-quotes, replace " into \"
+# escape double-quotes: replace " into \"
 # read from stdin, and write into stdout
 # created by zhouwei on 2017-02-22
 
