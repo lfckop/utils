@@ -19,7 +19,7 @@ if [[ "$@" == "" ]]; then
 else
     for file in "$@"
     do
-	find . -type f -name "$file" -exec grep --color=auto -H -n "$key" {} \;
+        find . -type f -name "$file" -exec grep --color=auto -H -n "$key" {} \;
     done
 fi
 
