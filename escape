@@ -1,7 +1,7 @@
 #!/bin/bash
 # escape double-quotes: replace " to \"
 # read from stdin, and write to stdout
-# usage: $ escape
+# usage: escape
 # created by zhouwei on 2017-02-22
 
 while read line
