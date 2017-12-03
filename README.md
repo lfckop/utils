@@ -127,7 +127,7 @@ $ jargrep
 Usage: jargrep text <path or filename>
 ```
 ### `path`
-获取一个文件的绝对路径，该命令通常用于Mac下，功能类似于Liunux命令`readlink -f filename`。
+获取一个文件的绝对路径，该命令通常用于Mac下，功能类似于Linux命令`readlink -f filename`。
 
 ```bash
 $ path
