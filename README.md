@@ -1,16 +1,19 @@
 # 简介
-**[utils](https://github.com/lfckop/utils)**: shell工具集，通常用于**Linux**环境中，包含一些常用的alias、脚本、git命令自动补全、定制化的命令提示符(显示git分支名)等等，意图提供直观、简化的命令行操作。用户也可根据自己的需要对其进行修改和定制。
+**[utils: shell工具集](https://github.com/lfckop/utils)**，通常用于**Linux**环境中，包含一些常用的alias、脚本、git命令自动补全、定制化的命令提示符(显示git分支名)等等，意图提供直观、简化的命令行操作。用户也可根据自己的需要对其进行修改和定制。
 
 这个项目会一直进行更新和维护。欢迎大家使用、提意见和merge request！
 
 # 用法
 1. 将*utils*下载至用户home目录：`$ cd $HOME && git clone https://github.com/lfckop/utils.git`
+    
 2. 有两种使用方式可供选择：
   * 只影响当前shell会话：`$ source ${HOME}/utils/.source.sh`
   * 影响所有的shell会话：在文件`/etc/profile`最后添加一行`source ${HOME}/utils/.source.sh`，或者：`$ sudo echo 'source ${HOME}/utils/.source.sh' >> /etc/profile` (需要root权限)。
 
 # 功能介绍
+
 ## 常用`alias`
+
 ```bash
 alias ll="ls -alF"
 alias grep="grep --color=auto"
@@ -26,7 +29,7 @@ alias sost="netstat -n | awk '/^tcp/ {s[\$NF]++} END{for(i in s) print i, s[i]}'
 ```
 这些`alias`都定义在`.source.sh`文件中，一般比较直观，意图是提供简化的命令行操作，部分alias介绍如下。
 
-* `pg`: 查找某个进程：`$ pg java`，可根据进程PID或进程名进行查找。
+* `pg`: 查找某个进程：`$ pg java`，可根据进程PID或进程名进行查找。该命令名字简短，使用非常频繁。
 * `ng`: 检查端口使用情况：`$ ng 8080`，可根据端口号、进程PID或进程名进行查找。
 * `extip`: 获取本机外网ip：`$ extip`.
 * `mcp`: Java项目maven打包：`$ mcp`.
@@ -66,8 +69,17 @@ Usage: cl "99.1*(88.6+77.7)"
    or: cl 99.9/m (equals: 'cl 99.9/1024/1024')
 ```
 
+### `escape`
+转义字符串中的双引号，即将`"`替换成`\"`。从标准输入stdin中读取字符，并写到标准输出stdout中。
+
+```bash
+$ escape 
+{ "code":0, "msg":"success" }
+{ \"code\":0, \"msg\":\"success\" }
+```
+
 ### `ff`
-对`find`和`grep`命令的封装，用于在当前目录的文件中查找某个字符串。
+对`find`和`grep`命令的封装，用于在当前目录的文件中查找某个字符串。该命令名字简短，使用非常频繁。
 
 ```bash
 $ ff
@@ -84,13 +96,13 @@ Example: ff ConcurrentHashMap Test1.java Test2.java
 
 1. `first60s`：保存当前系统信息，如内存、CPU、网络、磁盘等主要部件的负载、IO、性能、容量等相关信息。脚本基本上是参考netflix的一篇博文["Linux Performance Analysis in 60,000 Milliseconds"](http://techblog.netflix.com/2015/11/linux-performance-analysis-in-60s.html)，作者[Brendan Gregg](http://www.brendangregg.com/)；网上也有其译文["Linux性能分析的前60000毫秒"](https://segmentfault.com/a/1190000004104493)。
 
-    ```bash
+    ```
     Usage: first60s
     ```
 
 2. `jdt`：**J**ava **D**ump **T**ool，保存当前Java应用的运行时信息，主要是用jstack, jmap, jinfo和jstat保存相关信息，再结合GC日志，应该可以对后续排查提供更多帮助。
 
-    ```bash
+    ```
     Usage: jdt [pid]
     ```
 
@@ -114,6 +126,13 @@ Usage: jarfind file_name jar_path
 $ jargrep
 Usage: jargrep text <path or filename>
 ```
+### `path`
+获取一个文件的绝对路径，该命令通常用于Mac下，功能类似于Liunux命令`readlink -f filename`。
+
+```bash
+$ path
+Usage: path filename
+```
 
 ### `tarc, tart, tarx`
 这三个工具是对`tar`命令的封装，分别用于打包、列出包文件、解包。因考虑到文件存储与传输速度都不是限制，为提高打包与解包速度，故没有对文件进行压缩。
@@ -128,3 +147,4 @@ Usage: tart filename.tar
 $ tarx
 Usage: tarx filename.tar
 ```
+ 
