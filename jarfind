@@ -28,5 +28,8 @@ while true; do
     elif [ -f "$folder" ]; then
 	findinjar "$folder" "$keyword"
     fi
+    
+    echo ""
+
     shift;
 done

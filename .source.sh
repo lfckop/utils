@@ -23,6 +23,7 @@ alias yi="yum -y install"
 alias mcp="mvn clean package"
 alias mcpnt="mvn clean package -DskipTests -Dmaven.test.skip=true"
 alias sost="netstat -n | awk '/^tcp/ {s[\$NF]++} END{for(i in s) print i, s[i]}' OFS='\t'"
+alias f="find . -type f -name "
 
 # git auto-completion
 source ${PATH_TO_UTILS}/.git-completion.bash
