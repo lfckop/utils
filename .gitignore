@@ -1,0 +1,30 @@
+# Eclipse
+.classpath
+.project
+.settings/
+*.launch
+.metadata
+.factorypath
+*.swp
+
+# Intellij
+.idea/
+*.iml
+*.iws
+/out/ 
+
+# Mac
+.DS_Store
+._*
+
+# Linux
+*~
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# Maven
+target/
+output/
+logs/
