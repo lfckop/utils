@@ -1,6 +1,8 @@
 #!/bin/bash
 # read from stdin, and merge multiple lines to one line, and output to stdout
-# usage: 
+# usage: merge_line          # merge 2 lines to one line, and separate with " "
+#        merge_line 3        # merge 3 lines to one line, and separate with " "
+#        merge_line 4 "##"   # merge 4 lines to one line, and separate with "##"
 # created by zhouwei on 2019-08-28
 
 # default value
