@@ -1,0 +1,41 @@
+#!/bin/bash
+# read from stdin, and merge multiple lines to one line, and output to stdout
+# usage: 
+# created by zhouwei on 2019-08-28
+
+# default value
+n=2
+separator=' '
+
+count=$#
+if [[ $count -eq 0 ]]; then
+    n=2
+    separator=' '
+elif [[ $count -eq 1 ]]; then
+    if [[ "$1" =~ ^[0-9]+$ ]]; then
+        n="$1"
+    else
+        separator="$1"
+    fi
+else
+    n="$1"
+    separator="$2"
+fi
+
+i=1
+while read line
+do
+    echo -n "$line"
+    if (( i%n == 0 )); then
+        echo ""
+    else
+        echo -n "$separator"
+    fi
+    ((i++))
+done
+
+if (( (i-1)%n != 0 )); then
+    echo ""
+fi
+
+exit 0
