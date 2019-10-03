@@ -1,6 +1,7 @@
 #!/bin/bash
-# read from stdin, and merge per n lines to one line, and output to stdout
+# read from pipeline, and merge per n lines to one line, and output to stdout
 # usage: merge_line          # merge per 2 lines to one line, and separate with " "
+#        merge_line "="      # merge per 2 lines to one line, and separate with "="
 #        merge_line 3        # merge per 3 lines to one line, and separate with " "
 #        merge_line 4 "##"   # merge per 4 lines to one line, and separate with "##"
 # created by zhouwei on 2019-08-28
@@ -25,7 +26,7 @@ else
 fi
 
 i=0
-while read line
+awk '{print $0}' | while read line
 do
     if [[ $i -gt 0 ]]; then   
         if (( i%n == 0 )); then
