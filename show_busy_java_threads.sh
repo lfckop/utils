@@ -1,6 +1,6 @@
 #!/bin/bash
 # @Function
-# Find out the highest cpu consumed threads of java, and print the stack of these threads.
+# Find out the highest cpu consumed threads of java processes, and print the stack of these threads.
 #
 # @Usage
 #   $ ./show-busy-java-threads
@@ -8,8 +8,6 @@
 # @online-doc https://github.com/oldratlee/useful-scripts/blob/master/docs/java.md#-show-busy-java-threads
 # @author Jerry Lee (oldratlee at gmail dot com)
 # @author superhj1987 (superhj1987 at 126 dot com)
-# 
-# just copied from: https://github.com/oldratlee/useful-scripts/blob/master/show-busy-java-threads
 
 readonly PROG="`basename $0`"
 readonly -a COMMAND_LINE=("$0" "$@")
@@ -91,7 +89,8 @@ usage() {
 
     > $out cat <<EOF
 Usage: ${PROG} [OPTION]... [delay [count]]
-Find out the highest cpu consumed threads of java, and print the stack of these threads.
+Find out the highest cpu consumed threads of java processes,
+and print the stack of these threads.
 
 Example:
   ${PROG}       # show busy java threads info
@@ -99,32 +98,41 @@ Example:
   ${PROG} 3 10  # update every 3 seconds, update 10 times
 
 Output control:
-  -p, --pid <java pid>      find out the highest cpu consumed threads from the specified java process,
+  -p, --pid <java pid>      find out the highest cpu consumed threads from
+                            the specified java process.
                             default from all java process.
   -c, --count <num>         set the thread count to show, default is 5.
   -a, --append-file <file>  specifies the file to append output as log.
-  -S, --store-dir <dir>     specifies the directory for storing intermediate files, and keep files.
-                            default store intermediate files at tmp dir, and auto remove after run.
-                            use this option to keep files so as to review jstack/top/ps output later.
+  -S, --store-dir <dir>     specifies the directory for storing
+                            the intermediate files, and keep files.
+                            default store intermediate files at tmp dir,
+                            and auto remove after run. use this option to keep
+                            files so as to review jstack/top/ps output later.
   delay                     the delay between updates in seconds.
   count                     the number of updates.
-                            delay/count arguments imitates the style of vmstat command.
+                            delay/count arguments imitates the style of
+                            vmstat command.
 
 jstack control:
   -s, --jstack-path <path>  specifies the path of jstack command.
-  -F, --force               set jstack to force a thread dump.
-                            use when jstack <pid> does not respond (process is hung).
-  -m, --mix-native-frames   set jstack to print both java and native frames (mixed mode).
-  -l, --lock-info           set jstack with long listing. Prints additional information about locks.
+  -F, --force               set jstack to force a thread dump. use when jstack
+                            does not respond (process is hung).
+  -m, --mix-native-frames   set jstack to print both java and native frames
+                            (mixed mode).
+  -l, --lock-info           set jstack with long listing.
+                            prints additional information about locks.
 
-cpu usage calculation control:
-  -d, --top-delay           specifies the delay between top samples, default is 0.5 (second).
-                            get thread cpu percentage during this delay interval.
+CPU usage calculation control:
+  -d, --top-delay           specifies the delay between top samples.
+                            default is 0.5 (second). get thread cpu percentage
+                            during this delay interval.
                             more info see top -d option. eg: -d 1 (1 second).
-  -P, --use-ps              use ps command to find busy thread(cpu usage) instead of top command,
-                            default use top command, because cpu usage of ps command is expressed as
-                            the percentage of time spent running during the entire lifetime of a process,
-                            this is not ideal.
+  -P, --use-ps              use ps command to find busy thread(cpu usage)
+                            instead of top command.
+                            default use top command, because cpu usage of
+                            ps command is expressed as the percentage of
+                            time spent running during the *entire lifetime*
+                            of a process, this is not ideal in general.
 
 Miscellaneous:
   -h, --help                display this help and exit.
@@ -409,17 +417,17 @@ printStackOfThreads() {
 
         if [ -n "$mix_native_frames" ]; then
             local sed_script="/--------------- $threadId ---------------/,/^---------------/ {
-                /--------------- $threadId ---------------/b # skip first seperator line
-                /^---------------/d # delete second seperator line
+                /--------------- $threadId ---------------/b # skip first separator line
+                /^---------------/d # delete second separator line
                 p
             }"
         elif [ -n "$force" ]; then
             local sed_script="/^Thread ${threadId}:/,/^$/ {
-                /^$/d; p # delete end seperator line
+                /^$/d; p # delete end separator line
             }"
         else
-            local sed_script="/nid=${threadId0x} /,/^$/ {
-                /^$/d; p # delete end seperator line
+            local sed_script="/ nid=${threadId0x} /,/^$/ {
+                /^$/d; p # delete end separator line
             }"
         fi
         {
