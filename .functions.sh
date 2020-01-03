@@ -2,6 +2,7 @@
 # common useful shell functions
 # function name usually starts with "f_"
 # usage: source this file before you use it
+# code source: https://github.com/lfckop/utils/blob/master/.functions.sh
 # created by zhouwei on 2017-12-07
 
 
