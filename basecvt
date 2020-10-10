@@ -1,0 +1,29 @@
+#!/bin/bash
+# base conversion between: binary, octal, decimal, and hexadecimal
+# usage: basecvt input_base output_base input_number
+# created by zhouwei on 2020-10-01
+
+set -e
+
+if [[ $# != 3 ]]; then
+	echo "Usage: basecvt input_base output_base input_number"
+	echo "For example: basecvt 2 10 1111   # it will return 15"
+	exit 1
+fi
+
+input_base=$1
+output_base=$2
+input_number=$3
+
+input_number=$(echo "$input_number" | awk '{print(toupper($1))}')
+# check the parameters, for example: 19 is a illegal input_number for input_base=8
+echo "$((${input_base}#${input_number}))" >/dev/null
+if [[ "$?" != 0 ]]; then
+	echo "ERROR: input_number ${input_number} is illegal for input_base ${input_base}"
+	exit 1
+fi
+
+
+echo "obase=${output_base}; ibase=${input_base}; $input_number" | bc
+
+
