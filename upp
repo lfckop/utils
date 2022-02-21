@@ -1,0 +1,15 @@
+#!/bin/bash
+# calculate rise percent
+# created by zhouwei on 2020-04-19
+
+if [[ $# != 2 ]]; then
+    echo "Usage: $0 from_number to_number"
+    exit 1
+fi
+
+from=$1
+to=$2
+
+echo $(cl "($to - $from) * 100 / $from")"%"
+
+exit 0
