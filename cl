@@ -16,6 +16,12 @@ p=${p//k/1024}
 p=${p//m/1048576}
 p=${p//g/1073741824}
 
-echo "scale=20;$p" | bc
+result=$(echo "scale=20;$p" | bc)
+echo $result
+
+if echo $result | grep -F '.' >&/dev/null; then
+    result=$(echo $result | sed -E 's/[0]{1,}$//g')
+fi
+echo $result | sed -E 's/\.$//g' | sed -E 's/^\./0\./g'
 
 exit 0
