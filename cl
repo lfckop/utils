@@ -17,11 +17,11 @@ p=${p//m/1048576}
 p=${p//g/1073741824}
 
 result=$(echo "scale=20;$p" | bc)
-echo $result
+#echo $result
 
 if echo $result | grep -F '.' >&/dev/null; then
     result=$(echo $result | sed -E 's/[0]{1,}$//g')
 fi
-echo $result | sed -E 's/\.$//g' | sed -E 's/^\./0\./g'
+echo $result | sed -E 's/\.$//g' | sed -E 's/^\./0\./g' | sed -E 's/^-\./-0\./g'
 
 exit 0
