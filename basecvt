@@ -16,6 +16,13 @@ output_base=$2
 input_number=$3
 
 input_number=$(echo "$input_number" | awk '{print(toupper($1))}')
+
+if [[ $input_base -eq 2 ]]; then
+    input_number=$(echo "$input_number" | sed -E 's/^0B//g')
+elif [[ $input_base -eq 16 ]]; then
+    input_number=$(echo "$input_number" | sed -E 's/^0X//g')
+fi
+
 # check the parameters, for example: 19 is a illegal input_number for input_base=8
 echo "$((${input_base}#${input_number}))" >/dev/null
 if [[ "$?" != 0 ]]; then
